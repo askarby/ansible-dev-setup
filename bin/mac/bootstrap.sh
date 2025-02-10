@@ -5,7 +5,7 @@ echo #
 ######################
 # Xcode installation #
 ######################
-xcode-select -p  2>&1 >/dev/null
+xcode-select -p  > /dev/null 2> /dev/null
 
 if [ $? -ne 0 ]; then
     echo "[INFO] Xcode doesn't seem to have been installed - launching installer"
