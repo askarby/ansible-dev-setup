@@ -34,13 +34,13 @@ else
 fi
 
 ###################
-# Install Ansible #
+# Install Ansible #cd 
 ###################
 pip3 list | grep ansible
 if [ $? -ne 0 ]; then
     echo "[INFO] Ansible doesn't seem to have been installed - installing!"
     echo ""
-    echo "... you'll be prompted to enter your "
+    echo "... you'll be prompted to enter your password to run as superuser"
     echo ""
 
     sudo pip3 install --ignore-installed ansible
@@ -56,4 +56,4 @@ ansible-galaxy install -r "$DEV_SETUP_HOME/requirements.yml"
 
 echo "[INFO] Bootstrap completed!"
 echo ""
-echo "... you're now ready to install ansible packages, go ahead and invoke /bin/mac/apply.sh!"
+echo "... you're now ready to install ansible packages, go ahead and invoke: $DEV_SETUP_HOME/bin/mac/apply.sh!"
