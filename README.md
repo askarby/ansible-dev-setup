@@ -4,13 +4,19 @@ This repository contains an Ansible configuration for setting up a Mac from scra
 
 ## Getting Started
 
-There's a simple shell script in `bin/bootstrap` which will perform the initial steps of:
+Simply execute:
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/askarby/ansible-dev-setup/main/bin/mac/bootstrap.sh)"
+```
+
+There's a simple shell script in `bin/mac/bootstrap` which will perform the initial steps of:
 
 1. Installing Xcode
 2. Installing Ansible
 3. Fetching required Ansible roles and collections
 
-And then runs the main playbook `ansible_osx.yml`.
+And then runs the main playbook `ansible_mac.yml`.
 
 For future updates, `bin/apply` can be used to run just the Ansible playbook without the setup commands.
 
@@ -18,17 +24,15 @@ It's important to note that this isn't designed to be particularly robust, parti
 
 ## What's installed
 
-The easiest way to understand what's installed is to read the contents of `ansible_osx.yml`, this configuration is fairly specific to the range of development I do personally, but may serve as a useful starting point for others. The core components are:
+The easiest way to understand what's installed is to read the contents of `ansible_mac.yml`, this configuration is fairly specific to the range of development I do personally, but may serve as a useful starting point for others. The core components are:
 
 - ZSH + Oh My Zsh as the primary shell
 - Homebrew for package management
-- ASDF for version management (along with plugins and default versions for ruby, python, javascript, elixir and erlang)
-- Virtualbox, Vagrant and Docker
-- VSCode + default plugins and configuration
-- A selection of Android SDK's
+- ASDF for version management (along with plugins and default versions for python and javascript)
+- Docker
 - Lots of other tools and utilities
 
 ## Customising
 
-Everything can be customised by editing `ansible_osx.yml`.
+Everything can be customised by editing `ansible_mac.yml`.
 
