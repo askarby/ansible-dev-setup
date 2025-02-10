@@ -16,9 +16,9 @@ There's a simple shell script in `bin/mac/bootstrap` which will perform the init
 2. Installing Ansible
 3. Fetching required Ansible roles and collections
 
-And then runs the main playbook `ansible_mac.yml`.
+And then runs the main playbook `ansible_dev_mac.yml`.
 
-For future updates, `bin/apply` can be used to run just the Ansible playbook without the setup commands.
+For future updates, `bin/mac/apply.sh` can be used to run just the Ansible playbook without the setup commands.
 
 It's important to note that this isn't designed to be particularly robust, particularly when it comes to required env vars, it may be required to run this. Then close the terminal and open it again and re-run and then repeat this process a few times.
 
