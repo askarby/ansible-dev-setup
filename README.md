@@ -7,7 +7,7 @@ This repository contains an Ansible configuration for setting up a Mac from scra
 Simply execute:
 
 ```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/askarby/ansible-dev-setup/main/bin/mac/bootstrap.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/askarby/ansible-dev-setup/main/mac/bin/bootstrap.sh)"
 ```
 
 There's a simple shell script in `bin/mac/bootstrap` which will perform the initial steps of:

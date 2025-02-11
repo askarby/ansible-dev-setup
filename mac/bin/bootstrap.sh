@@ -18,6 +18,7 @@ if [ $? -ne 0 ]; then
     exit 1
 else 
     echo "[INFO] Xcode seems to be installed, moving on to next step!"
+    echo ""
 fi
 
 ####################
@@ -27,10 +28,11 @@ DEV_SETUP_HOME="$HOME/.ansible-dev-setup"
 if [ -d "$DEV_SETUP_HOME/.git" ]; then
   echo "[INFO] Github repository has been cloned, updating it instead!"
   git --git-dir="$DEV_SETUP_HOME/.git" pull origin main
-
+  echo ""
 else 
   echo "[INFO] Github repository has NOT been cloned, cloning into: $DEV_SETUP_HOME..."
   git clone https://github.com/askarby/ansible-dev-setup.git $DEV_SETUP_HOME
+  echo ""
 fi
 
 ###################
@@ -44,8 +46,10 @@ if [ $? -ne 0 ]; then
     echo ""
 
     sudo pip3 install --ignore-installed ansible
+    echo ""
 else 
     echo "[INFO] Ansible seems to be installed, moving on to next step!"
+    echo ""
 fi
 
 ################################
@@ -53,7 +57,8 @@ fi
 ################################
 echo "[INFO] Adding requirements to Ansible Galaxy!"
 ansible-galaxy install -r "$DEV_SETUP_HOME/requirements.yml"
+echo ""
 
 echo "[INFO] Bootstrap completed!"
 echo ""
-echo "... you're now ready to install ansible packages, go ahead and invoke: $DEV_SETUP_HOME/bin/mac/apply.sh!"
+echo "... you're now ready to install ansible packages, go ahead and invoke: $DEV_SETUP_HOME/mac/bin/apply.sh!"
