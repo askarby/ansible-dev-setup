@@ -13,12 +13,6 @@
       become: true
       become_user: root
 
-    - name: 'add custom homebrew repos'
-      community.general.homebrew_tap:
-        name: [
-          homebrew/cask-versions,
-        ]
-
     - name: Install core packages via brew casks
       community.general.homebrew_cask:
         name: "{{ item }}"
@@ -29,10 +23,7 @@
         - google-chrome
         - iterm2
         - slack
-        - visual-studio-code
-        - vlc
-        - zoom
-        - tuple
+        - discord
 
     - name: "Install homebrew packages"
       community.general.homebrew:
