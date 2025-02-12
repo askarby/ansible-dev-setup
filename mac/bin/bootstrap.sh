@@ -73,7 +73,7 @@ if [ -d "$DOTFILES_STOW" ]; then
 else 
   echo "[INFO] Github repository (with dot files) has NOT been cloned, cloning into: $DEV_SETUP_HOME..."
   echo ""
-  git clone REPO_DOTFILES $DEV_SETUP_HOME
+  git clone $REPO_DOTFILES $DEV_SETUP_HOME
   echo ""
 fi
 
