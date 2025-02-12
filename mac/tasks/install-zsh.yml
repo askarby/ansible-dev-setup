@@ -10,16 +10,28 @@
     line: "{{ zsh_path.stdout }}"
   become: true
 
+- name: Check if Oh My ZSH is installed
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+  register: zsh_location
+
 - name: Install Oh My ZSH
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  when: not zsh_location.stat.exists
   args:
-    creates: "/Users/{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+    creates: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
 
 - name: Set ZSH as the default shell
   shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
   become: true
 
+- name: Check if Antigen is installed
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/antigen.zsh"
+  register: antigen_location
+
 - name: Install Antigen
   shell: curl -L git.io/antigen > {{ lookup('env', 'HOME') }}/.oh-my-zsh/antigen.zsh
+  when: not antigen_location.stat.exists
   args:
-    creates: "/Users/{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+    creates: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/antigen.zsh"
