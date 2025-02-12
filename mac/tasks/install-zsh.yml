@@ -13,11 +13,13 @@
 - name: Install Oh My ZSH
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   args:
-    creates: "/Users/{{ lookup('env', 'USER') }}/.oh-my-zsh"
+    creates: "/Users/{{ lookup('env', 'HOME') }}/.oh-my-zsh"
 
 - name: Set ZSH as the default shell
   shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
   become: true
 
 - name: Install Antigen
-  shell: curl -L git.io/antigen > {{ lookup('env', 'USER') }}/.oh-my-zsh/antigen.zsh
+  shell: curl -L git.io/antigen > {{ lookup('env', 'HOME') }}/.oh-my-zsh/antigen.zsh
+  args:
+    creates: "/Users/{{ lookup('env', 'HOME') }}/.oh-my-zsh"
