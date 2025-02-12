@@ -1,4 +1,9 @@
 ---
+- name: Get the path to ZSH
+  become: false
+  local_action: command which zsh
+  register: zsh_path
+  
 - name: "Ensure homebrew zsh is in allowed shells"
   lineinfile:
     path: /etc/shells
