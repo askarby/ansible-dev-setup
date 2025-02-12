@@ -24,28 +24,14 @@ dockitems_persist: []
 #   pos: 5
 
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  - autoconf
-  - bash-completion
-  - doxygen
-  - gettext
-  - gifsicle
+  - dockutil
   - git
   - gh
-  - go
-  - gpg
   - httpie
   - iperf
-  - libevent
-  - sqlite
-  - nmap
-  - pngpaste
-  - ssh-copy-id
   - readline
   - openssl
-  - pv
   - wget
-  - wrk
 
 homebrew_taps: []
 
