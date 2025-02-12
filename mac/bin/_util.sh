@@ -10,10 +10,9 @@ fi
 assert_directory_exists () {
     local DIRECTORY="$1"
     local MESSAGE"${2:="[ERROR] Directory '$DIRECTORY' doesn't exist"}"
-    local EXIT_CODE="${3:="-1"}"
 
     if [ ! -d "${DIRECTORY}" ]; then
         echo MESSAGE
-        exit $EXIT_CODE
+        exit -1
     fi
 }
