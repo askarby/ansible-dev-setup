@@ -11,7 +11,7 @@ dockitems_remove: []
 # - Podcasts
 # - 'App Store'
 dockitems_persist: []
-# - name: "Sublime Text"
+# - name: "Sublime Text"x
 #   path: "/Applications/Sublime Text.app/"
 #   pos: 5
 
@@ -54,8 +54,6 @@ homebrew_cask_apps:
   - microsoft-office
   - slack
   - webstorm
-
-osx_script: "~/.osx --no-restart"
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
