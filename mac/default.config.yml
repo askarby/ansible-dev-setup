@@ -18,10 +18,16 @@ dockitems_remove:
   - Musik
   - 'App Store'
 
-dockitems_persist: []
-# - name: "Sublime Text"x
-#   path: "/Applications/Sublime Text.app/"
-#   pos: 5
+dockitems_persist: 
+  - name: "Google Chrome"
+    path: "/Applications/Google Chrome.app/"
+    pos: 2
+  - name: "Brave Browser"
+    path: "/Applications/Brave Browser.app/"
+    pos: 3
+  - name: "Firefox"
+    path: "/Applications/Firefox.app/"
+    pos: 4
 
 homebrew_installed_packages:
   - dockutil
