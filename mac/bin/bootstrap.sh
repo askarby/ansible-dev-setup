@@ -36,7 +36,7 @@ else
 fi
 
 ###################
-# Install Ansible #cd 
+# Install Ansible # 
 ###################
 pip3 list | grep ansible
 if [ $? -ne 0 ]; then
@@ -56,7 +56,7 @@ fi
 # Install Ansible requirements #
 ################################
 echo "[INFO] Adding requirements to Ansible Galaxy!"
-ansible-galaxy install -r "$DEV_SETUP_HOME/requirements.yml"
+ansible-galaxy install -r "$DEV_SETUP_HOME/mac/requirements.yml"
 echo ""
 
 echo "[INFO] Bootstrap completed!"
