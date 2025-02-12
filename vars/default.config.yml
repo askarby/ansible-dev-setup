@@ -1,7 +1,10 @@
 ---
 configure_dotfiles: true
 
-# Set to 'true' to configure the Dock via dockutil.
+######################
+# Dock Configuration #
+######################
+
 configure_dock: true
 dockitems_remove: 
   - Launchpad
@@ -29,14 +32,23 @@ dockitems_persist:
     path: "/Applications/Firefox.app/"
     pos: 4
 
+############
+# Homebrew #
+############
+
 homebrew_installed_packages:
+  - asdf
   - dockutil
+  - fzf
   - git
   - gh
   - httpie
   - iperf
+  - neovim
   - readline
   - openssl
+  - tmux
+  - tpm
   - wget
 
 homebrew_taps: []
@@ -50,10 +62,15 @@ homebrew_cask_apps:
   - google-chrome
   - google-drive
   - intellij-idea
+  - iterm2
   - jetbrains-toolbox
   - microsoft-office
   - slack
   - webstorm
+
+##########################
+# Package configurations #
+##########################
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are

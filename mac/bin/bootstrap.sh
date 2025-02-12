@@ -1,6 +1,32 @@
 #!/bin/bash
+#
+#  ____   ___   ___  ______  ___________ ____   ____ ____  
+# |    \ /   \ /   \|      |/ ___|      |    \ /    |    \ 
+# |  o  |     |     |      (   \_|      |  D  |  o  |  o  )
+# |     |  O  |  O  |_|  |_|\__  |_|  |_|    /|     |   _/ 
+# |  O  |     |     | |  |  /  \ | |  | |    \|  _  |  |   
+# |     |     |     | |  |  \    | |  | |  .  |  |  |  |   
+# |_____|\___/ \___/  |__|   \___| |__| |__|\_|__|__|__|   
+#  Ansible Configuration
+#
+# ... This installs pre-requirements, clones required repositories
+#     to allow for performing the Ansible installation!
 
-echo #
+# Get absolute path to "bin"-folder
+SCRIPT_DIR=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+
+# Various (script) inclusions
+. $SCRIPT_DIR/_util.sh
+
+#################################################
+# Configuration (setup variables used in script #
+#################################################
+# Include configuration script
+. $SCRIPT_DIR/_config.sh
+
+# Github repositories
+REPO_ANSIBLE=https://github.com/askarby/ansible-dev-setup.git
+REPO_DOTFILES=https://github.com/askarby/dotfiles
 
 ######################
 # Xcode installation #
@@ -21,26 +47,39 @@ else
     echo ""
 fi
 
-####################
-# Clone repository #
-####################
-DEV_SETUP_HOME="$HOME/.ansible-dev-setup"
+####################################
+# Clone ansible (setup) repository #
+####################################
 if [ -d "$DEV_SETUP_HOME/.git" ]; then
-  echo "[INFO] Github repository has been cloned, updating it instead!"
+  echo "[INFO] Github repository (with ansible setup) has been cloned, updating it instead!"
   echo ""
   git --git-dir="$DEV_SETUP_HOME/.git" pull origin main
   echo ""
 else 
-  echo "[INFO] Github repository has NOT been cloned, cloning into: $DEV_SETUP_HOME..."
+  echo "[INFO] Github repository (with ansible setup) has NOT been cloned, cloning into: $DEV_SETUP_HOME..."
   echo ""
-  git clone https://github.com/askarby/ansible-dev-setup.git $DEV_SETUP_HOME
+  git clone $REPO_ANSIBLE $DEV_SETUP_HOME
+  echo ""
+fi
+
+#############################
+# Clone dotfiles repository #
+#############################
+if [ -d "$DOTFILES_STOW" ]; then
+  echo "[INFO] Github repository (with dot files) has been cloned, updating it instead!"
+  echo ""
+  git --git-dir="$REPO_DOTFILES/.git" pull origin main
+  echo ""
+else 
+  echo "[INFO] Github repository (with dot files) has NOT been cloned, cloning into: $DEV_SETUP_HOME..."
+  echo ""
+  git clone REPO_DOTFILES $DEV_SETUP_HOME
   echo ""
 fi
 
 ####################
 # Install Homebrew #
 ####################
-HOMEBREW_BIN="/opt/homebrew/bin"
 if [ -d "$HOMEBREW_BIN" ]; then
   echo "[INFO] Homebrew seems to be installed, moving on to next step!"
   echo ""

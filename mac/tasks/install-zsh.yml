@@ -1,0 +1,18 @@
+---
+- name: "Ensure homebrew zsh is in allowed shells"
+  lineinfile:
+    path: /etc/shells
+    line: "{{ zsh_path.stdout }}"
+  become: true
+
+- name: Install Oh My ZSH
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  args:
+    creates: "/Users/{{ lookup('env', 'USER') }}/.oh-my-zsh"
+
+- name: Set ZSH as the default shell
+  shell: chsh -s $(which zsh) {{ lookup('env', 'USER') }}
+  become: true
+
+- name: Install Antigen
+  shel: curl -L git.io/antigen > {{ lookup('env', 'USER') }}/.oh-my-zsh/antigen.zsh

@@ -3,7 +3,8 @@
   hosts: all
 
   vars_files:
-    - default.config.yml
+    - vars/default.config.yml
+    - vars/nerdfont.config.yml
 
   pre_tasks:
     - name: Include playbook configuration.
@@ -16,6 +17,9 @@
     - role: elliotweiser.osx-command-line-tools
     - role: geerlingguy.mac.homebrew
       tags: ['homebrew']
+    - role: ansible-role-nerdfonts
+      when: install_nerdfonts
+      tags: ['nerdfonts']
     - role: geerlingguy.mac.dock
       when: configure_dock
       tags: ['dock']

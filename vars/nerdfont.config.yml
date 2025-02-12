@@ -1,0 +1,8 @@
+---
+nf_user: "{{ lookup('env', 'USER') }}"
+nf_group: "{{ nf_user }}"
+nf_single_fonts:
+  - "Meslo/S/Regular/MesloLGSNerdFont-Regular.ttf"
+  - "Meslo/S/Bold/MesloLGSNerdFont-Bold.ttf"  
+  - "Meslo/S/Italic/MesloLGSNerdFont-Italic.ttf"
+  - "Meslo/S/Bold-Italic/MesloLGSNerdFont-BoldItalic.ttf"
