@@ -35,42 +35,6 @@ dockitems_persist:
     path: "/Applications/Firefox.app/"
     pos: 4
 
-############
-# Homebrew #
-############
-
-homebrew_installed_packages:
-  - asdf
-  - dockutil
-  - fzf
-  - git
-  - gh
-  - httpie
-  - iperf
-  - neovim
-  - readline
-  - openssl
-  - tmux
-  - tpm
-  - wget
-
-homebrew_taps: []
-
-homebrew_cask_appdir: /Applications
-homebrew_cask_apps:
-  - brave-browser
-  - discord
-  - docker
-  - firefox
-  - google-chrome
-  - google-drive
-  - intellij-idea
-  - iterm2
-  - jetbrains-toolbox
-  - microsoft-office
-  - slack
-  - webstorm
-
 ##########################
 # Package configurations #
 ##########################
