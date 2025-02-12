@@ -1,4 +1,6 @@
 ---
+install_nerdfonts: true
+
 nf_user: "{{ lookup('env', 'USER') }}"
 nf_group: "{{ nf_user }}"
 nf_single_fonts:
