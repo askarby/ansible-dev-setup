@@ -17,7 +17,7 @@
     - role: elliotweiser.osx-command-line-tools
     - role: geerlingguy.mac.homebrew
       tags: ['homebrew']
-    - role: ansible-role-nerdfonts
+    - role: ctorgalson.nerdfonts
       when: install_nerdfonts
       tags: ['nerdfonts']
     - role: geerlingguy.mac.dock
