@@ -1,11 +1,9 @@
 ---
-- name: Install Homebrew on mac
-  tasks: 
-    - name: Check if Homebrew is already installed
-      stat:
-        path: /usr/local/bin/brew
-      register: brew_cli
-    - name: Execute the script
-      shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/.../master/install.sh)"
-      delay: 3
-      when: not brew_cli.stat.exists
+- name: Check if Homebrew is already installed
+  stat:
+    path: /usr/local/bin/brew
+  register: brew_cli
+- name: Execute the script
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/.../master/install.sh)"
+  delay: 3
+  when: not brew_cli.stat.exists
