@@ -12,7 +12,7 @@ assert_directory_exists () {
     local MESSAGE"${2:="[ERROR] Directory '$DIRECTORY' doesn't exist"}"
 
     if [ ! -d "${DIRECTORY}" ]; then
-        echo MESSAGE
+        echo $MESSAGE
         exit -1
     fi
 }
