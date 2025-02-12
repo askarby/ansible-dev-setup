@@ -1,4 +1,4 @@
 ---
 - name: Configure dotfiles with Stow
-  shell: stow -d {{ lookup('env', 'USER') }}/.dotfiles -t {{ lookup('env', 'USER') }}
+  shell: stow -d {{ lookup('env', 'HOME') }}/.dotfiles -t {{ lookup('env', 'HOME') }}
   
