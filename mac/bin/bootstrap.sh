@@ -15,14 +15,18 @@
 # Get absolute path to "bin"-folder
 SCRIPT_DIR=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
 
-# Various (script) inclusions
-. $SCRIPT_DIR/_util.sh
-
 #################################################
 # Configuration (setup variables used in script #
 #################################################
-# Include configuration script
-. $SCRIPT_DIR/_config.sh
+# ... Ideally, this would be sourcing in ./_config.sh, but
+#     it's not possible, to do through "sh -c" and "curl"
+
+# Home directories
+export DEV_SETUP_HOME="$HOME/.ansible-dev-setup"
+export DOTFILES_STOW="$HOME/.dotfiles"
+
+# Homebrew bin folder
+export HOMEBREW_BIN="/opt/homebrew/bin"
 
 # Github repositories
 REPO_ANSIBLE=https://github.com/askarby/ansible-dev-setup.git
