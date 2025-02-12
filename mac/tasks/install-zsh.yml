@@ -15,4 +15,4 @@
   become: true
 
 - name: Install Antigen
-  shel: curl -L git.io/antigen > {{ lookup('env', 'USER') }}/.oh-my-zsh/antigen.zsh
+  shell: curl -L git.io/antigen > {{ lookup('env', 'USER') }}/.oh-my-zsh/antigen.zsh
