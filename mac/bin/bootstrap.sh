@@ -27,11 +27,27 @@ fi
 DEV_SETUP_HOME="$HOME/.ansible-dev-setup"
 if [ -d "$DEV_SETUP_HOME/.git" ]; then
   echo "[INFO] Github repository has been cloned, updating it instead!"
+  echo ""
   git --git-dir="$DEV_SETUP_HOME/.git" pull origin main
   echo ""
 else 
   echo "[INFO] Github repository has NOT been cloned, cloning into: $DEV_SETUP_HOME..."
+  echo ""
   git clone https://github.com/askarby/ansible-dev-setup.git $DEV_SETUP_HOME
+  echo ""
+fi
+
+####################
+# Install Homebrew #
+####################
+HOMEBREW_BIN="/opt/homebrew/bin"
+if [ -d "$HOMEBREW_BIN" ]; then
+  echo "[INFO] Homebrew seems to be installed, moving on to next step!"
+  echo ""
+else
+  echo "[INFO] Homebrew does not seem to be installed - installing it!"
+  echo ""
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   echo ""
 fi
 
@@ -52,9 +68,9 @@ else
     echo ""
 fi
 
-################################
-# Install Ansible requirements #
-################################
+######################################
+# Install (add) Ansible requirements #
+######################################
 echo "[INFO] Adding requirements to Ansible Galaxy!"
 ansible-galaxy install -r "$DEV_SETUP_HOME/mac/requirements.yml"
 echo ""

@@ -21,8 +21,6 @@
       tags: ['dock']
 
   tasks:
-    - import_tasks: tasks/install-homebrew.yml
-      tags: ['install-homebrew']
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
 
