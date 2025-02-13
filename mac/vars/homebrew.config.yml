@@ -1,33 +1,48 @@
 ---
 homebrew_installed_packages:
   - asdf
+  - btop
   - dockutil
+  - eza
   - fzf
   - git
   - gh
+  - glow
   - httpie
   - iperf
+  - jq
+  - lazydocker
+  - lazygit
   - neovim
   - readline
   - openssl
   - stow
   - tmux
+  - tmuxinator
   - tpm
   - wget
-
-homebrew_taps: []
+  - yazi
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - 1password
   - brave-browser
   - discord
   - docker
   - firefox
+  - ghostty
   - google-chrome
   - google-drive
+  - insomnia
   - intellij-idea
   - iterm2
   - jetbrains-toolbox
+  - karabiner-elements
   - microsoft-office
+  - plex
   - slack
+  - skype
+  - visual-studio-code
   - webstorm
+
+homebrew_taps: []
