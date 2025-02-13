@@ -1,6 +1,7 @@
 ---
 homebrew_installed_packages:
   - asdf
+  - bat
   - btop
   - dockutil
   - eza
