@@ -35,3 +35,8 @@
   when: not antigen_location.stat.exists
   args:
     creates: "{{ lookup('env', 'HOME') }}/.oh-my-zsh/antigen.zsh"
+
+- name: Remove .zshrc file (obtained from dotfiles)
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.zshrc"
+    state: absent
