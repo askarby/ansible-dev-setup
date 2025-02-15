@@ -29,6 +29,13 @@
       tags: ['dock']
 
   tasks:
+    - import_tasks: tasks/install-zsh.yml
+      tags: ['install-zsh']
+
+    - import_tasks: tasks/stow.yml
+      when: configure_dotfiles
+      tags: ['stow']
+
     - name: Install ASDF Plugins      
       include_tasks: tasks/asdf-plugin-install.yml
       loop: "{{ asdf_plugins }}"
@@ -38,13 +45,6 @@
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
-
-    - import_tasks: tasks/install-zsh.yml
-      tags: ['install-zsh']
-
-    - import_tasks: tasks/stow.yml
-      when: configure_dotfiles
-      tags: ['stow']
 
     - name: Run post-provision task files in a block.
       tags: ['post']
