@@ -8,12 +8,12 @@
 
 - name: Installing LTS version of toolchain managed by plugin
   shell:  "asdf install {{ item.name }} {{ item.lts_version }}"
-  when: "{{ installed.rc }} | int != 0"
+  when: "installed.rc | int != 0"
 
 - name: Reshim plugin
   shell: "asdf reshim {{ item.name }}"
-  when: "{{ installed.rc }} | int != 0"
+  when: "installed.rc | int != 0"
 
 - name: Setting LTS version of toolchain as globally available
   shell: "asdf global {{ item.name }} {{ item.plugin_url }}"
-  when: "{{ installed.rc }} | int != 0"
+  when: "installed.rc | int != 0"
