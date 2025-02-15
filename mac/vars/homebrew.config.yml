@@ -7,11 +7,12 @@ homebrew_installed_packages:
   - eza
   - fd
   - fzf
-  - gawk
+  - gawk  
   - gh
   - git
   - git-delta
   - glow
+  - gnu-sed
   - gpg 
   - httpie
   - iperf

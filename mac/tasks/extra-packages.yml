@@ -17,3 +17,6 @@
     version: "{{ item.version | default(omit) }}"
     global: true
   loop: "{{ npm_packages }}"
+
+- name: Reshim binaries from installed NPM packages
+  shell: "asdf reshim nodejs

@@ -13,3 +13,11 @@
 - name: Reshim plugin
   shell: "asdf reshim {{ item.name }}"
   when: "installed.rc | int != 0"
+
+- name: Remove old LTS version from global .tool-versions
+  shell: "gsed -i '{{ item.name }}/d'" {{ lookup('env', 'HOME') }} 
+  when: "installed.rc | int != 0"
+
+- name: Add new LTS version to global .tool-versions
+  shell: "echo \"{{ item.name }} {{ item.lts_version }}\" >> {{ lookup('env', 'HOME') }}"
+  when: "installed.rc | int != 0"
