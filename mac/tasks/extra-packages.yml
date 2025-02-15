@@ -10,6 +10,5 @@
     version: "{{ item.version | default(omit) }}"
     global: true
     executable: "{{ item.executable | default(omit) }}"
-    environment:
-      PATH: "{{ lookup('env', 'HOME') }}/.asdf/installs/nodejs/{{ installed_node_version }}/bin"
+    path: "{{ lookup('env', 'HOME') }}/.asdf/installs/nodejs/{{ installed_node_version }}/bin"
   loop: "{{ npm_packages }}"
