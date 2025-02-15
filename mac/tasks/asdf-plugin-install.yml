@@ -5,6 +5,7 @@
 - name: Check if already installed
   shell: "asdf list {{ item.name}} | grep {{ item.lts_version }} || /usr/bin/false"
   register: installed
+  ignore_errors: true
 
 - name: Installing LTS version of toolchain managed by plugin
   shell:  "asdf install {{ item.name }} {{ item.lts_version }}"
