@@ -13,7 +13,3 @@
 - name: Reshim plugin
   shell: "asdf reshim {{ item.name }}"
   when: "installed.rc | int != 0"
-
-- name: Setting LTS version of toolchain as globally available
-  shell: "asdf global {{ item.name }} {{ item.plugin_url }}"
-  when: "installed.rc | int != 0"
