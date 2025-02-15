@@ -10,7 +10,7 @@
 
 - name: Install global NPM packages.
   environment:
-    PATH: "{{ lookup('env', 'HOME') }}/.asdf/installs/nodejs/{{ installed_node_version }}/bin:{{ ansible_env.PATH }}""
+    PATH: "{{ lookup('env', 'HOME') }}/.asdf/installs/nodejs/{{ installed_node_version }}/bin:{{ ansible_env.PATH }}"
   npm:
     name: "{{ item.name | default(item) }}"
     state: "{{ item.state | default('present') }}"
