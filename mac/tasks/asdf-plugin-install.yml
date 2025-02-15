@@ -8,7 +8,8 @@
   ignore_errors: true
 
 - name: Determine installed version of Node.js
-  install: "{{ installed_version.stdout | contains(item.lts_version) }}"
+  set_fact:
+    install: "{{ installed_version.stdout | contains(item.lts_version) }}"
 
 - name: Installing LTS version of toolchain managed by plugin
   shell:  "asdf install {{ item.name }} {{ item.lts_version }}"
