@@ -3,7 +3,7 @@
   shell: "asdf plugin add {{ item.name }} {{ item.plugin_url }}"
 
 - name: Check if already installed
-  shell: "asdf list {{ item.name}} | grep {{ item.lts_version }} || /usr/bin/false"
+  shell: "asdf list {{ item.name}} | grep {{ item.lts_version }}"
   register: installed
   ignore_errors: true
 
@@ -16,7 +16,7 @@
   when: "installed.rc | int != 0"
 
 - name: Remove old LTS version from global .tool-versions
-  shell: "gsed -i '/{{ item.name }}/d' {{ lookup('env', 'HOME')/.tool-versions }}"
+  shell: "gsed -i '/{{ item.name }}/d' {{ lookup('env', 'HOME') }}/.tool-versions"
   when: "installed.rc | int != 0"
 
 - name: Add new LTS version to global .tool-versions
