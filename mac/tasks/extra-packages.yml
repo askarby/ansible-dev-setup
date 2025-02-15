@@ -1,11 +1,12 @@
 ---
 - name: Determine installed version of Node.js
   set_fact:
-    installed_node_version: "{{ asdf_plugins | selectattr('name','equalto', 'nodejs') | map(attribute='lts_version') }}"
+    installed_node_version: "{{ asdf_plugins | selectattr('name','equalto', 'nodejs') | map(attribute='lts_version' | first) }}"
 
 - name: Print the Node.js LTS version, used for installing Node.js packages
   debug:
-    msg: "The Node.js LTS version used, is: {{ installed_node_version }}"
+    msg: |
+      "The Node.js LTS version used, is: {{ installed_node_version }}"
 
 - name: Install global NPM packages.
   npm:
