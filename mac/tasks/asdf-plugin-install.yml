@@ -1,12 +1,12 @@
 ---
-- nme: Adding plugin
+- name: Adding plugin
   shell: "asdf plugin add {{ item.name }} {{ item.plugin_url }}"
 
-- nme: Installing LTS version of toolchain managed by plugin
+- name: Installing LTS version of toolchain managed by plugin
   shell:  "asdf install {{ item.name }} {{ item.lts_version }}"
 
-- nme: Reshim plugin
+- name: Reshim plugin
   shell: "asdf reshim {{ item.name }}"
 
-- nme: Setting LTS version of toolchain as globally available
+- name: Setting LTS version of toolchain as globally available
   shell: "asdf global {{ item.name }} {{ item.plugin_url }}"
