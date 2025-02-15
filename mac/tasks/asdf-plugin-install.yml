@@ -3,11 +3,11 @@
   shell: "asdf plugin add {{ item.name }} {{ item.plugin_url }}"
 
 - name: Check if already installed
-  shell: "asdf list {{ item.name}} | grep {{ item.lts_version }} || 'not installed'"
+  shell: "asdf list {{ item.name}} | grep {{ item.lts_version }} || echo 'not installed'"
   register: status
   ignore_errors: true
 
-- name: Determine installed version of Node.js
+- name: Actual plugin installation
   when: status.stdout match("not installed")
   block:
     - name: Installing LTS version of toolchain managed by plugin
