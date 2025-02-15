@@ -8,7 +8,7 @@
   ignore_errors: true
 
 - name: Determine installed version of Node.js
-  when: status match("not installed")
+  when: status.stdout match("not installed")
   block:
     - name: Installing LTS version of toolchain managed by plugin
       shell:  "asdf install {{ item.name }} {{ item.lts_version }}"
