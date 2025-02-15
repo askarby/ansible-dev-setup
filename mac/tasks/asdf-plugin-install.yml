@@ -27,5 +27,4 @@
 
     - name: Add new LTS version to global .tool-versions
       shell: "echo \"{{ item.name }} {{ item.lts_version }}\" >> {{ lookup('env', 'HOME') }}/.tool-versions"
-      when: "install"
 
