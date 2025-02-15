@@ -41,7 +41,6 @@ homebrew_cask_apps:
   - google-drive
   - insomnia
   - intellij-idea
-  - iterm2
   - jetbrains-toolbox
   - karabiner-elements
   - microsoft-office
