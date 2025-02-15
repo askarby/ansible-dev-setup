@@ -3,31 +3,29 @@
   shell: "asdf plugin add {{ item.name }} {{ item.plugin_url }}"
 
 - name: Check if already installed
-  shell: "asdf list {{ item.name}} | grep {{ item.lts_version }}"
-  register: installed_version
+  shell: "asdf list {{ item.name}} | grep {{ item.lts_version }} || 'not installed'"
+  register: status
   ignore_errors: true
 
 - name: Determine installed version of Node.js
-  set_fact:
-    install: "{{ installed_version.stdout | contains(item.lts_version) }}"
+  when: status match("not installed")
+  block:
+    - name: Installing LTS version of toolchain managed by plugin
+      shell:  "asdf install {{ item.name }} {{ item.lts_version }}"
 
-- name: Installing LTS version of toolchain managed by plugin
-  shell:  "asdf install {{ item.name }} {{ item.lts_version }}"
-  when: "install"
+    - name: Reshim plugin
+      shell: "asdf reshim {{ item.name }}"
 
-- name: Reshim plugin
-  shell: "asdf reshim {{ item.name }}"
-  when: "install"
+    - name: Check if .tool-versions exists
+      stat:
+        path: "{{ lookup('env', 'HOME') }}/.tool-versions"
+      register: tool_versions_result
 
-- name: Check if .tool-versions exists
-  stat:
-    path: "{{ lookup('env', 'HOME') }}/.tool-versions"
-  register: stat_result
+    - name: Remove old LTS version from global .tool-versions
+      shell: "gsed -i '/{{ item.name }}/d' {{ lookup('env', 'HOME') }}/.tool-versions"
+      when: tool_versions_result.stat.exists
 
-- name: Remove old LTS version from global .tool-versions
-  shell: "gsed -i '/{{ item.name }}/d' {{ lookup('env', 'HOME') }}/.tool-versions"
-  when: "install and stat_result.stat.exists"
+    - name: Add new LTS version to global .tool-versions
+      shell: "echo \"{{ item.name }} {{ item.lts_version }}\" >> {{ lookup('env', 'HOME') }}/.tool-versions"
+      when: "install"
 
-- name: Add new LTS version to global .tool-versions
-  shell: "echo \"{{ item.name }} {{ item.lts_version }}\" >> {{ lookup('env', 'HOME') }}/.tool-versions"
-  when: "install"
