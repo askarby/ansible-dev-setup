@@ -33,6 +33,18 @@ dockitems_persist:
   - name: "Firefox"
     path: "/Applications/Firefox.app/"
     pos: 4
+  - name: "Alacritty"
+    path: "/Applications/Alacritty.app/"
+    pos: 5
+  - name: "IntelliJ IDEA"
+    path: "/Applications/IntelliJ IDEA.app/"
+    pos: 6
+  - name: "Webstorm"
+    path: "/Applications/Webstorm.app/"
+    pos: 7
+  - name: "Visual Studio Code"
+    path: "/Applications/Visual Studio Code.app/"
+    pos: 8
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
