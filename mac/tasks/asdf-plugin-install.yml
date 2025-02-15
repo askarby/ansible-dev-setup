@@ -4,21 +4,29 @@
 
 - name: Check if already installed
   shell: "asdf list {{ item.name}} | grep {{ item.lts_version }}"
-  register: installed
+  register: installed_version
   ignore_errors: true
+
+- name: Determine installed version of Node.js
+  install: "{{ installed_version.stdout | contains(item.lts_version) }}"
 
 - name: Installing LTS version of toolchain managed by plugin
   shell:  "asdf install {{ item.name }} {{ item.lts_version }}"
-  when: "installed.rc | int != 0"
+  when: "install"
 
 - name: Reshim plugin
   shell: "asdf reshim {{ item.name }}"
-  when: "installed.rc | int != 0"
+  when: "install"
+
+- name: Check if .tool-versions exists
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.tool-versions"
+  register: stat_result
 
 - name: Remove old LTS version from global .tool-versions
   shell: "gsed -i '/{{ item.name }}/d' {{ lookup('env', 'HOME') }}/.tool-versions"
-  when: "installed.rc | int != 0"
+  when: "install and stat_result.stat.exists"
 
 - name: Add new LTS version to global .tool-versions
   shell: "echo \"{{ item.name }} {{ item.lts_version }}\" >> {{ lookup('env', 'HOME') }}/.tool-versions"
-  when: "installed.rc | int != 0"
+  when: "install"
