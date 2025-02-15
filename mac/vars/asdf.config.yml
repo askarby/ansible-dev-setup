@@ -1,0 +1,8 @@
+---
+asdf_plugins:
+  - name: nodejs
+    lts_version: 22.14.0
+    plugin_url: https://github.com/asdf-vm/asdf-nodejs.git
+  - name: java
+    lts_version: zulu-21.40.17
+    plugin_url: https://github.com/halcyon/asdf-java.git

@@ -7,7 +7,6 @@ configure_dotfiles: true
 ######################
 # Dock Configuration #
 ######################
-
 configure_dock: true
 dockitems_remove: 
   - Launchpad
@@ -34,18 +33,6 @@ dockitems_persist:
   - name: "Firefox"
     path: "/Applications/Firefox.app/"
     pos: 4
-
-##########################
-# Package configurations #
-##########################
-
-# Install packages from other package managers.
-# Note: You are responsible for making sure the required package managers are
-# installed, eg. through homebrew.
-npm_packages: []
-# - name: webpack
-#   state: present # present/absent/latest, default: present
-#   version: "^2.6" # default: N/A
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []

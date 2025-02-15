@@ -27,6 +27,13 @@
       tags: ['dock']
 
   tasks:
+    - name: Install ASDF Plugins      
+      include_tasks: tasks/asdf-plugin-install.yml
+      loop: "{{ asdf_plugins }}"
+      loop_control:
+        label: "Installing ASDF plugin {{ item.name }}"
+      tags: ['asdf']
+
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
 

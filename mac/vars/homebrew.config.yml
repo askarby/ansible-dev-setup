@@ -5,10 +5,14 @@ homebrew_installed_packages:
   - btop
   - dockutil
   - eza
+  - fd
   - fzf
-  - git
+  - gawk
   - gh
+  - git
+  - git-delta
   - glow
+  - gpg 
   - httpie
   - iperf
   - jq
@@ -17,6 +21,7 @@ homebrew_installed_packages:
   - neovim
   - readline
   - openssl
+  - ripgrep
   - stow
   - tmux
   - tmuxinator
