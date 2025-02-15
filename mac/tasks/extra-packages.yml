@@ -1,6 +1,7 @@
 ---
-
-installed_node_version: "{{ asdf_plugins | selectattr('name','equalto', 'nodejs') | map(attribute='lts_version') }}"
+- name: Determine installed version of Node.js
+  set_fact:
+    installed_node_version: "{{ asdf_plugins | selectattr('name','equalto', 'nodejs') | map(attribute='lts_version') }}"
 
 - name: Install global NPM packages.
   npm:
