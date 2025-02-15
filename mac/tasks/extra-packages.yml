@@ -19,4 +19,4 @@
   loop: "{{ npm_packages }}"
 
 - name: Reshim binaries from installed NPM packages
-  shell: "asdf reshim nodejs
+  shell: "asdf reshim nodejs"
