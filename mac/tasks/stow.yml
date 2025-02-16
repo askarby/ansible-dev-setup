@@ -1,4 +1,15 @@
 ---
+- name: Discover Stow packages to install
+  find:
+    paths: "{{ lookup('env', 'HOME') }}/.dotfiles"
+    recurse: false
+    file_type: directory
+    excludes: '.git'
+  register: stow_packages
+
 - name: Configure dotfiles with Stow
-  shell: stow -d {{ lookup('env', 'HOME') }}/.dotfiles -t {{ lookup('env', 'HOME') }} {{ stow_packages | join(' ') }}
+  shell: stow -d {{ lookup('env', 'HOME') }}/.dotfiles -t {{ lookup('env', 'HOME') }} {{ item.path | basename }}
+  loop: "{{ stow_packages.files }}"
+  loop_control:
+    label: "Installing Stow package: {{ item.path | basename }}"
   

@@ -8,7 +8,6 @@
     - vars/homebrew.config.yml
     - vars/nerdfont.config.yml
     - vars/packages.config.yml
-    - vars/terminal.config.yml
 
   pre_tasks:
     - name: Include playbook configuration.
