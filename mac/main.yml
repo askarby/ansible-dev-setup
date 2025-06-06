@@ -28,6 +28,10 @@
       tags: ['dock']
 
   tasks:
+    - name: Perform Homebrew post installation tasks
+      import_tasks: tasks/homebrew-post-install.yml
+      tags: ['homebrew']
+
     - import_tasks: tasks/install-zsh.yml
       tags: ['install-zsh']
 

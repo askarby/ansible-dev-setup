@@ -1,0 +1,14 @@
+---
+- name: Create device configuration folder
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.device-cfg"
+  register: cfg_location
+
+- name: Create device configuration folder
+  shell: mkdir "{{ lookup('env', 'HOME') }}/.device-cfg"
+  when: not cfg_location.stat.exists
+
+- name: Add homebrew prefix to environment
+  shell: |
+    echo "# Reference to Homebrew directory" >> "{{ lookup('env', 'HOME') }}/.device-cfg/env.zsh"
+    echo "export HOMEBREW_PREFIX=\"/opt/homebrew\"" >> "{{ lookup('env', 'HOME') }}/.device-cfg/env.zsh"
